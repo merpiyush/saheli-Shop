@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Saheli Shoppee · Haute Couture & Ethnic Elegance | Rajkot</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ----- Luxury Crimson & Velvet Red Palette ----- */
+    :root {
+      --primary-red: #C8102E;         /* Royal Crimson Red */
+      --deep-crimson: #6B0012;        /* Dark Velvet Wine Red */
+      --dark-burgundy: #380008;      /* Deep Midnight Burgundy */
+      --accent-gold: #E6B800;         /* Fine Gold Accent */
+      --bg-cream: #FAFAFA;            /* Soft Pearl White */
+      --text-dark: #1F080C;           /* Deep Charcoal Red Text */
+      --text-muted: #7A6065;
+      --glass-white: rgba(255, 255, 255, 0.75);
+      --glass-border: rgba(200, 16, 46, 0.12);
+      --shadow-luxury: 0 20px 50px rgba(107, 0, 18, 0.08);
+      --shadow-hover: 0 30px 60px rgba(200, 16, 46, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .brand-logo, .hero-tag {
+      font-family: 'Cinzel', serif;
+    }
+
+    /* ----- Dynamic Glowing Ambient Background ----- */
+    .ambient-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      animation: floatGlow 14s infinite alternate ease-in-out;
+    }
+
+    .glow-orb-1 { width: 450px; height: 450px; background: var(--primary-red); top: -10%; left: -5%; }
+    .glow-orb-2 { width: 550px; height: 550px; background: var(--deep-crimson); bottom: 10%; right: -10%; animation-delay: -5s; }
+    .glow-orb-3 { width: 300px; height: 300px; background: var(--accent-gold); top: 50%; left: 40%; opacity: 0.1; }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(60px, 40px) scale(1.15); }
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ----- Glassmorphic Floating Header ----- */
+    header {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      margin: 0 auto;
+      max-width: 1240px;
+      padding: 0 1rem;
+    }
+
+    .navbar {
+      background: var(--glass-white);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 100px;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-logo .deep { color: var(--deep-crimson); }
+    .brand-logo .red { color: var(--primary-red); font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--primary-red);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--primary-red); }
+
+    .btn-header {
+      background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+      color: white !important;
+      padding: 0.65rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      box-shadow: 0 8px 20px rgba(200, 16, 46, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .btn-header:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(200, 16, 46, 0.35);
+    }
+
+    /* ----- Hero Section ----- */
+    .hero {
+      padding: 5rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200, 16, 46, 0.06);
+      border: 1px solid rgba(200, 16, 46, 0.18);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      color: var(--deep-crimson);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      line-height: 1.15;
+      color: var(--dark-burgundy);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content h1 span {
+      background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.2rem;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--deep-crimson), var(--dark-burgundy));
+      color: white;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(107, 0, 18, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(107, 0, 18, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--deep-crimson);
+      border: 1px solid var(--glass-border);
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-luxury);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(200, 16, 46, 0.04);
+      transform: translateY(-3px);
+    }
+
+    /* Hero Showcase Grid */
+    .hero-visual {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .visual-card {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-luxury);
+      transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+    }
+
+    .visual-card.tall {
+      transform: translateY(-20px);
+    }
+
+    .visual-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .visual-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(56, 0, 8, 0.8) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      color: white;
+    }
+
+    .visual-overlay h4 {
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .visual-overlay p {
+      font-size: 0.82rem;
+      opacity: 0.8;
+    }
+
+    /* ----- Features Grid ----- */
+    .section-header {
+      text-align: center;
+      margin: 5rem 0 3.5rem;
+    }
+
+    .section-header span {
+      color: var(--primary-red);
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--dark-burgundy);
+      margin-top: 0.3rem;
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-luxury);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-red), var(--deep-crimson));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .feature-box:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: rgba(200, 16, 46, 0.08);
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-box h3 {
+      font-size: 1.3rem;
+      color: var(--dark-burgundy);
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ----- Interactive Showcase Section ----- */
+    .showcase-wrapper {
+      background: linear-gradient(135deg, var(--dark-burgundy), var(--deep-crimson));
+      border-radius: 32px;
+      padding: 4rem 3rem;
+      color: white;
+      margin: 4rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(56, 0, 8, 0.3);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .showcase-text h2 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #FFF;
+    }
+
+    .showcase-text p {
+      opacity: 0.85;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Category Interactive Pills */
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .pill {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .pill:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .pill.active {
+      background: var(--primary-red);
+      border-color: #FFF;
+      box-shadow: 0 8px 20px rgba(200, 16, 46, 0.5);
+      transform: scale(1.05);
+    }
+
+    /* Sliding Image Frame & Animations */
+    .showcase-image-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.2);
+      height: 400px;
+    }
+
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Animation Classes for Slide Swap Effect */
+    .showcase-img.slide-out {
+      transform: translateX(-100%) scale(0.95);
+      opacity: 0;
+    }
+
+    .showcase-img.slide-in-start {
+      transform: translateX(100%) scale(0.95);
+      opacity: 0;
+    }
+
+    .showcase-caption-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      padding: 1.5rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .showcase-caption-bar h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: #FFF;
+    }
+
+    .showcase-caption-bar span {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ----- Location & Visit Card ----- */
+    .location-card {
+      background: white;
+      border-radius: 32px;
+      padding: 3.5rem;
+      box-shadow: var(--shadow-luxury);
+      border: 1px solid var(--glass-border);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .location-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .location-item i {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-red);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(200, 16, 46, 0.3);
+    }
+
+    .location-item h4 {
+      font-size: 1.2rem;
+      color: var(--dark-burgundy);
+      margin-bottom: 0.4rem;
+    }
+
+    .location-item p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* ----- Luxury Footer ----- */
+    footer {
+      background: var(--dark-burgundy);
+      color: white;
+      padding: 4rem 0 2rem;
+      border-radius: 40px 40px 0 0;
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 2rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand p {
+      opacity: 0.7;
+      max-width: 380px;
+      font-size: 0.95rem;
+    }
+
+    .footer-map-frame {
+      width: 380px;
+      height: 160px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      font-size: 0.88rem;
+      opacity: 0.6;
+    }
+
+    /* Floating Fast Call Button */
+    .floating-action {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, var(--primary-red), var(--deep-crimson));
+      color: white;
+      padding: 0.9rem 1.6rem;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 30px rgba(200, 16, 46, 0.4);
+      z-index: 99;
+      transition: all 0.3s ease;
+    }
+
+    .floating-action:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 35px rgba(200, 16, 46, 0.5);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { max-width: 500px; margin: 0 auto; }
+      .features-container { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .location-card { grid-template-columns: 1fr; }
+      .footer-wrapper { flex-direction: column; text-align: center; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-bg">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <header>
+    <nav class="navbar">
+      <a href="#" class="brand-logo">
+        <span class="deep">SAHELI</span>
+        <span class="red">SHOPPEE</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About Boutique</a></li>
+        <li><a href="#collections">Couture Categories</a></li>
+        <li><a href="#showroom">Showroom</a></li>
+        <li><a href="#location">Visit Us</a></li>
+      </ul>
+      <a href="https://www.google.com/maps/place/Saheli+shoppee/@22.2941066,70.7904185,15z" target="_blank" class="btn-header">
+        <i class="fas fa-compass"></i> Store Map
+      </a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-crown"></i> RAJKOT'S FINEST ETHNIC HUB
+        </div>
+        <h1>Timeless Elegance, <span>Crafted for You.</span></h1>
+        <p>Step into Saheli Shoppee on Yagnik Road. Discover our exclusive handpicked collection of bridal lehengas, festive sarees, and couture designer suits.</p>
+        <div class="hero-actions">
+          <a href="#location" class="btn-primary">
+            <i class="fas fa-store"></i> Visit Flagship Store
+          </a>
+          <a href="tel:+919081499922" class="btn-secondary">
+            <i class="fas fa-phone"></i> Direct Inquiry
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual" id="showroom">
+        <div class="visual-card tall">
+          <img src="img/a.png" alt="Saheli Shoppee Store Front Window" />
+          <div class="visual-overlay">
+            <h4>Boutique Entrance</h4>
+            <p>Dr. Yagnik Road, Rajkot</p>
+          </div>
+        </div>
+        <div class="visual-card">
+          <img src="img/b.png" alt="Saheli Shoppee Luxury Showroom Interior" />
+          <div class="visual-overlay">
+            <h4>Luxury Lounge</h4>
+            <p>Air-Conditioned Shopping Studio</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-header">
+        <span>Curated Excellence</span>
+        <h2>The Saheli Experience</h2>
+      </div>
+
+      <div class="features-container">
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-gem"></i></div>
+          <h3>Bridal Couture</h3>
+          <p>Exquisite royal lehengas featuring intricate zardosi, gota patti, and modern embroidery tailored for brides and bridesmaids.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-vest"></i></div>
+          <h3>Heritage Sarees</h3>
+          <p>From rich Banarasi silks to lightweight organza and georgette sarees designed for every festive occasion.</p>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+          <h3>Designer Suits & Kurtis</h3>
+          <p>Trending Indo-western gowns, tailored designer suits, and ready-to-wear daily casuals curated with comfortable fabrics.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="collections" class="showcase-wrapper">
+      <div class="showcase-grid">
+        <div class="showcase-text">
+          <h2>Handpicked Ethnic Ensembles</h2>
+          <p>Click any couture category below to preview featured collections live from our store.</p>
+          
+          <div class="category-pills">
+            <span class="pill active" data-img="img/b.png" data-title="Bridal Lehengas" data-desc="Handcrafted Royal Velvet & Silk Ensembles">Bridal Lehengas</span>
+            <span class="pill" data-img="img/a.png" data-title="Silk Sarees" data-desc="Authentic Banarasi & Kanjivaram Weaves">Silk Sarees</span>
+            <span class="pill" data-img="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" data-title="Anarkali Suits" data-desc="Flowing Heavy Dupatta Designer Suits">Anarkali Suits</span>
+            <span class="pill" data-img="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80" data-title="Indo-Western Gowns" data-desc="Contemporary Reception & Engagement Dresses">Gowns</span>
+            <span class="pill" data-img="img/b.png" data-title="Crop Top Sets" data-desc="Modern Festive & Sangeet Wear">Crop Top Sets</span>
+            <span class="pill" data-img="img/a.png" data-title="Ethnic Kurtis" data-desc="Comfortable Daily & Festive Designer Wear">Ethnic Kurtis</span>
+          </div>
+        </div>
+
+        <div class="showcase-image-container">
+          <img id="showcaseImage" class="showcase-img" src="img/b.png" alt="Bridal Lehengas Collection" />
+          <div class="showcase-caption-bar">
+            <div>
+              <h4 id="showcaseTitle">Bridal Lehengas</h4>
+              <span id="showcaseDesc">Handcrafted Royal Velvet & Silk Ensembles</span>
+            </div>
+            <i class="fas fa-arrow-right-long" style="color: var(--primary-red); font-size: 1.2rem;"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="location-card">
+      <div class="location-item">
+        <i class="fas fa-location-dot"></i>
+        <div>
+          <h4>Address</h4>
+          <p>Opp. Jilla Panchayat, Dr. Yagnik Road, Rajkot, Gujarat 360001</p>
+        </div>
+      </div>
+
+      <div class="location-item">
+        <i class="fas fa-clock"></i>
+        <div>
+          <h4>Store Hours</h4>
+          <p>Monday – Sunday<br><strong>10:00 AM – 09:00 PM</strong></p>
+        </div>
+      </div>
+
+      <div class="location-item">
+        <i class="fas fa-headset"></i>
+        <div>
+          <h4>Assistance</h4>
+          <p>Call Store Manager:<br><strong>+91 90814 99922</strong></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a href="tel:+919081499922" class="floating-action">
+    <i class="fas fa-phone"></i> Call Store
+  </a>
+
+  <footer>
+    <div class="container footer-wrapper">
+      <div class="footer-brand">
+        <h3 class="brand-logo"><span style="color: white;">SAHELI</span> <span style="color: var(--primary-red);">SHOPPEE</span></h3>
+        <p>Rajkot's premier physical fashion lounge offering authentic women's ethnic wear, bridal collections, and festive couture.</p>
+      </div>
+      <div class="footer-map-frame">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.6888206969966!2d70.7878436!3d22.2941066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959cb0018158509%3A0xbe874a3aa35744c!2sSaheli%20shoppee!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Saheli Shoppee Rajkot. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pills = document.querySelectorAll('.category-pills .pill');
+      const showcaseImg = document.getElementById('showcaseImage');
+      const showcaseTitle = document.getElementById('showcaseTitle');
+      const showcaseDesc = document.getElementById('showcaseDesc');
+
+      pills.forEach(pill => {
+        pill.addEventListener('click', function() {
+          if (this.classList.contains('active')) return;
+
+          // Update active state
+          pills.forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+
+          const newImgSrc = this.getAttribute('data-img');
+          const newTitle = this.getAttribute('data-title');
+          const newDesc = this.getAttribute('data-desc');
+
+          // Trigger Slide-Out Animation
+          showcaseImg.classList.add('slide-out');
+
+          setTimeout(() => {
+            // Swap content while image is hidden
+            showcaseImg.src = newImgSrc;
+            showcaseImg.alt = newTitle;
+            showcaseTitle.textContent = newTitle;
+            showcaseDesc.textContent = newDesc;
+
+            // Prepare slide-in state
+            showcaseImg.classList.remove('slide-out');
+            showcaseImg.classList.add('slide-in-start');
+
+            // Force reflow and trigger Slide-In
+            requestAnimationFrame(() => {
+              showcaseImg.classList.remove('slide-in-start');
+            });
+          }, 400);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
